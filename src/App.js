@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import AppWrapper from "./components/UI/AppWrapper";
+import DatePicker from "./components/DatePicker/DatePicker";
+import TimeLine from "./components/TimeLine/TimeLine";
+import AddRecipe from "./components/AddRecipe/AddRecipe";
 
 function App() {
+  const [addRecipeIsShown, setAddRecipeIsShown] = useState(false);
+
+  const showAddRecipeHandler = () => {
+    setAddRecipeIsShown(true);
+  };
+
+  const hideAddRecipeHandler = () => {
+    setAddRecipeIsShown(false);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-screen min-h-screen flex justify-center items-center">
+      <AppWrapper>
+        <DatePicker />
+        <TimeLine onShowAddRecipe={showAddRecipeHandler} />
+        {addRecipeIsShown && <AddRecipe onHideAddRecipe={hideAddRecipeHandler} />}
+      </AppWrapper>
     </div>
   );
 }
