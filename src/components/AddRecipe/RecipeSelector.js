@@ -8,6 +8,8 @@ const RecipeSelector = () => {
   const [recipes, setRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
 
+  console.log(selectedRecipe);
+
   const fetchRecipes = async () => {
     setIsLoading(true);
     setError(null);
