@@ -10,7 +10,7 @@ const DatePicker = () => {
 
   const [selectedDay, setSelectedDay] = useState(defaultDatePickerDate);
 
-  console.log(selectedDay);
+  // console.log(selectedDay);
 
   return (
     <Calendar

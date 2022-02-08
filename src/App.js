@@ -21,7 +21,7 @@ function App() {
       <AppWrapper>
         <DatePicker />
         <TimeLine onShowAddRecipe={showAddRecipeHandler} />
-        {addRecipeIsShown && <AddRecipe onHideAddRecipe={hideAddRecipeHandler} />}
+        {addRecipeIsShown && <AddRecipe onCloseAddRecipe={hideAddRecipeHandler} />}
       </AppWrapper>
     </div>
   );
