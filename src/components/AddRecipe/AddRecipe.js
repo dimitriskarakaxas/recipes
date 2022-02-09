@@ -35,16 +35,6 @@ const AddRecipe = ({ dateTimeData, onCloseAddRecipe }) => {
 
   return (
     <Modal onCloseAddRecipe={onCloseAddRecipe}>
-      <div
-        className={`text-sm md:text-base absolute top-2 left-0 transition-transform -translate-x-full ${
-          error ? "translate-x-0" : ""
-        }`}
-      >
-        <Alert status="error" variant="left-accent" fontSize="inherit">
-          <AlertIcon />
-          Fill the form and try again!
-        </Alert>
-      </div>
       <header>
         <h3 className="text-xl text-center font-bold md:text-left">Select Recipe</h3>
       </header>
@@ -64,6 +54,14 @@ const AddRecipe = ({ dateTimeData, onCloseAddRecipe }) => {
           Save
         </ModalButton>
       </footer>
+      <div className="absolute top-2 left-0 overflow-hidden">
+        <div className={`text-sm md:text-base transition-transform -translate-x-full ${error ? "translate-x-0" : ""}`}>
+          <Alert status="error" variant="left-accent" fontSize="inherit">
+            <AlertIcon />
+            Fill the form and try again!
+          </Alert>
+        </div>
+      </div>
     </Modal>
   );
 };
