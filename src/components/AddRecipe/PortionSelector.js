@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useCallback } from "react";
 
 import Selector from "react-select";
 
@@ -13,20 +13,17 @@ const options = [
   { value: 8, label: "8 portions" },
 ];
 
-const PortionSelector = () => {
-  const [selectedPortion, setSelectedPortion] = useState(null);
-
-  console.log(selectedPortion);
+const PortionSelector = ({ onPortionChange }) => {
+  const selectorChangeHandler = useCallback(
+    (opt) => {
+      onPortionChange(opt.value);
+    },
+    [onPortionChange]
+  );
 
   return (
     <Fragment>
-      <Selector
-        isSearchable={false}
-        onChange={(opt) => {
-          setSelectedPortion(opt.value);
-        }}
-        options={options}
-      />
+      <Selector isSearchable={false} placeholder="Select Portions" onChange={selectorChangeHandler} options={options} />
     </Fragment>
   );
 };

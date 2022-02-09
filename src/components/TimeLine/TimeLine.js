@@ -20,11 +20,17 @@ const HOURS = [
   "9 PM",
 ];
 
-const TimeLine = ({ onShowAddRecipe }) => {
+const TimeLine = ({ onTimeChange, onShowAddRecipe, selectedDate }) => {
   return (
     <div className="mt-20 h-96 rounded-md overflow-y-scroll">
       {HOURS.map((hour) => (
-        <HourLine key={hour} hour={hour} onShowAddRecipe={onShowAddRecipe} />
+        <HourLine
+          key={hour}
+          hour={hour}
+          onTimeChange={onTimeChange}
+          onShowAddRecipe={onShowAddRecipe}
+          selectedDate={selectedDate}
+        />
       ))}
     </div>
   );

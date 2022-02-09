@@ -1,14 +1,18 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 import SearchableSelector from "react-select";
 
-const RecipeSelector = () => {
+const RecipeSelector = ({ onRecipeChange }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recipes, setRecipes] = useState([]);
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
 
-  console.log(selectedRecipe);
+  const selectorChangeHandler = useCallback(
+    (opt) => {
+      onRecipeChange(opt.value);
+    },
+    [onRecipeChange]
+  );
 
   const fetchRecipes = async () => {
     setIsLoading(true);
@@ -46,9 +50,7 @@ const RecipeSelector = () => {
         loadingMessage={() => "Loading Recipes..."}
         isDisabled={error}
         options={recipes}
-        onChange={(opt) => {
-          setSelectedRecipe(opt.value);
-        }}
+        onChange={selectorChangeHandler}
       />
       <p
         className={`text-xs md:text-sm  text-center text-red-600 transition-opacity opacity-0 ${
