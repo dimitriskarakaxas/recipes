@@ -5,7 +5,7 @@ const Recipe = ({ recipeData, onShowAddRecipe }) => {
 
   return (
     <div
-      className="p-1 bg-gray-300 rounded-lg flex h-full ml-2 w-[170px] flex-shrink-0 transition-all hover:scale-105"
+      className="p-1 bg-gray-300 rounded-lg flex h-full ml-2 w-[170px] flex-shrink-0 cursor-pointer transition-all hover:scale-105"
       onClick={onShowAddRecipe}
     >
       <img
