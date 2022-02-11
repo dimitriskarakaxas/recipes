@@ -7,7 +7,7 @@ const Backdrop = ({ onCloseAddRecipe }) => {
 
 const ModalOverlay = (props) => {
   return (
-    <div className="bg-white w-4/5 md:w-1/2 max-w-4xl px-10 py-16 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[250]">
+    <div className="bg-white w-4/5 md:w-2/3 max-w-4xl px-10 py-16 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[250]">
       <div>{props.children}</div>
     </div>
   );
