@@ -8,16 +8,19 @@ import AddRecipe from "./components/AddRecipe/AddRecipe";
 import { utils } from "react-modern-calendar-datepicker";
 
 function App() {
-  const [addRecipeIsShown, setAddRecipeIsShown] = useState(false);
+  // addRecipe state controls whether the AddRecipe Modal is shown to the user
+  // and whether the modal should <ADD> or <EDIT> a recipe by checking the existance of the "recipeId" key
+  const [addRecipe, setAddRecipe] = useState({ isShown: false, recipeId: null });
+
   const [selectedDate, setSelectedDate] = useState(utils().getToday());
   const [selectedTime, setSelectedTime] = useState(null);
 
-  const showAddRecipeHandler = () => {
-    setAddRecipeIsShown(true);
+  const showAddRecipeHandler = (recipeId) => {
+    setAddRecipe({ isShown: true, recipeId: recipeId });
   };
 
   const hideAddRecipeHandler = () => {
-    setAddRecipeIsShown(false);
+    setAddRecipe({ isShown: false });
   };
 
   return (
@@ -25,8 +28,12 @@ function App() {
       <AppWrapper>
         <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
         <TimeLine onTimeChange={setSelectedTime} onShowAddRecipe={showAddRecipeHandler} selectedDate={selectedDate} />
-        {addRecipeIsShown && (
-          <AddRecipe dateTimeData={{ selectedDate, selectedTime }} onCloseAddRecipe={hideAddRecipeHandler} />
+        {addRecipe.isShown && (
+          <AddRecipe
+            recipeId={addRecipe.recipeId}
+            dateTimeData={{ selectedDate, selectedTime }}
+            onCloseAddRecipe={hideAddRecipeHandler}
+          />
         )}
       </AppWrapper>
     </div>

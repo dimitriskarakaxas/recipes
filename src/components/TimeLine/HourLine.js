@@ -33,7 +33,9 @@ const HourLine = ({ hour, onTimeChange, onShowAddRecipe, selectedDate }) => {
       <div className="h-full w-full p-1 flex bg-gray-100 border-t overflow-x-auto border-gray-300 group-first:border-t-0 group">
         {renderedRecipes &&
           renderedRecipes.length > 0 &&
-          renderedRecipes.map((recipe) => <Recipe recipeData={recipe} onShowAddRecipe={onShowAddRecipe} />)}
+          renderedRecipes.map((recipe) => (
+            <Recipe key={recipe.id} recipeData={recipe} onShowAddRecipe={onShowAddRecipe} />
+          ))}
       </div>
       <button
         className="bg-purple-800 w-6 h-6 text-sm text-white rounded-full flex justify-center items-center absolute top-1/2 right-1 -translate-y-1/2 md:w-auto md:h-auto md:px-6 md:py-2 outline-none md:text-base md:rounded md:top-1/2 md:-translate-y-1/2 transition-opacity duration-300 md:hover:bg-purple-900 md:opacity-0 md:group-hover:opacity-100"

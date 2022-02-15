@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback } from "react";
+import React, { Fragment, useCallback, useEffect } from "react";
 
 import Selector from "react-select";
 
@@ -13,7 +13,16 @@ const options = [
   { value: 8, label: "8 portions" },
 ];
 
-const PortionSelector = ({ onPortionChange }) => {
+const PortionSelector = ({ editMode, defaultValue, onPortionChange }) => {
+  let defaultOptionIdx;
+  if (editMode) {
+    defaultOptionIdx = options.findIndex((option) => option.value === defaultValue);
+  }
+
+  useEffect(() => {
+    if (editMode) onPortionChange(options[defaultOptionIdx].value);
+  }, [editMode, onPortionChange, defaultOptionIdx]);
+
   const selectorChangeHandler = useCallback(
     (opt) => {
       onPortionChange(opt.value);
@@ -23,7 +32,13 @@ const PortionSelector = ({ onPortionChange }) => {
 
   return (
     <Fragment>
-      <Selector isSearchable={false} placeholder="Select Portions" onChange={selectorChangeHandler} options={options} />
+      <Selector
+        defaultValue={options[defaultOptionIdx]}
+        isSearchable={false}
+        placeholder="Select Portions"
+        onChange={selectorChangeHandler}
+        options={options}
+      />
     </Fragment>
   );
 };

@@ -2,7 +2,7 @@ import React, { Fragment, useCallback, useEffect, useState } from "react";
 
 import SearchableSelector from "react-select";
 
-const RecipeSelector = ({ onRecipeChange }) => {
+const RecipeSelector = ({ editMode, defaultValue, onRecipeChange }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [recipes, setRecipes] = useState([]);
@@ -35,6 +35,12 @@ const RecipeSelector = ({ onRecipeChange }) => {
   };
 
   useEffect(() => {
+    if (editMode) {
+      onRecipeChange(defaultValue);
+    }
+  }, [editMode, onRecipeChange, defaultValue]);
+
+  useEffect(() => {
     fetchRecipes();
   }, []);
 
@@ -45,6 +51,7 @@ const RecipeSelector = ({ onRecipeChange }) => {
   return (
     <Fragment>
       <SearchableSelector
+        defaultInputValue={editMode ? defaultValue : ""}
         placeholder={placeholder}
         isLoading={isLoading}
         loadingMessage={() => "Loading Recipes..."}

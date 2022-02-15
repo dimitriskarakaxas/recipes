@@ -8,11 +8,11 @@ import RecipesProvider from "./store/RecipesProvider";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecipesProvider>
-      <ChakraProvider>
+    <ChakraProvider>
+      <RecipesProvider>
         <App />
-      </ChakraProvider>
-    </RecipesProvider>
+      </RecipesProvider>
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
