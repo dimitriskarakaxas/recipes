@@ -1,8 +1,8 @@
 import React from "react";
 
-import "react-modern-calendar-datepicker/lib/DatePicker.css";
+import "@hassanmojab/react-modern-calendar-datepicker/lib/DatePicker.css";
 import "./CustomDatePicker.css";
-import { Calendar } from "react-modern-calendar-datepicker";
+import { Calendar } from "@hassanmojab/react-modern-calendar-datepicker";
 
 const DatePicker = ({ selectedDate, onDateChange }) => {
   return (
