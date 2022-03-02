@@ -24,7 +24,7 @@
   color: brown !important;
 }
 
-.custom-today-day::after {
+/*.custom-today-day::after {
   content: "Today" !important;
   font-size: 10px !important;
   position: absolute !important;
@@ -36,7 +36,7 @@
   transition: none !important;
   z-index: 20 !important;
   transform: translateX(-50%) !important;
-}
+}*/
 
 @media (max-width: 900px) {
   .responsive-calendar {

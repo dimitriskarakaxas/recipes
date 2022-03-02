@@ -11,6 +11,7 @@ const DatePicker = ({ selectedDate, onDateChange }) => {
       onChange={onDateChange}
       calendarClassName="responsive-calendar"
       colorPrimary="#6a3cba"
+      colorPrimaryLight="gray"
       calendarTodayClassName="custom-today-day"
     />
   );

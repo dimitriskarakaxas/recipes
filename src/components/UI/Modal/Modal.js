@@ -1,29 +1,32 @@
 import React, { Fragment, useCallback, useEffect } from "react";
 import ReactDOM from "react-dom";
 
-const Backdrop = ({ onCloseAddRecipe }) => {
-  return <div className="fixed inset-0 bg-[#00000055] z-[200]" onClick={onCloseAddRecipe}></div>;
+const Backdrop = ({ onClose }) => {
+  return <div className="fixed inset-0 bg-[#00000055] z-[200]" onClick={onClose}></div>;
 };
 
-const ModalOverlay = (props) => {
+const ModalOverlay = ({ children, style }) => {
   return (
-    <div className="bg-white w-4/5 md:w-2/3 max-w-4xl px-10 py-16 rounded-lg absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[250]">
-      <div>{props.children}</div>
+    <div
+      style={style}
+      className="bg-white w-4/5 md:w-2/3 max-w-4xl px-10 py-16 rounded-lg fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[250]"
+    >
+      <div>{children}</div>
     </div>
   );
 };
 
 const portalElement = document.getElementById("overlays");
 
-const Modal = ({ children, onCloseAddRecipe }) => {
+const Modal = ({ children, onClose, style }) => {
   const closeOnEscapeKeyDown = useCallback(
     (event) => {
       // Close Modal on <Escape key>
       if ((event.charCode || event.keyCode) === 27) {
-        onCloseAddRecipe();
+        onClose();
       }
     },
-    [onCloseAddRecipe]
+    [onClose]
   );
 
   useEffect(() => {
@@ -35,8 +38,8 @@ const Modal = ({ children, onCloseAddRecipe }) => {
 
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop onCloseAddRecipe={onCloseAddRecipe} />, portalElement)}
-      {ReactDOM.createPortal(<ModalOverlay>{children}</ModalOverlay>, portalElement)}
+      {ReactDOM.createPortal(<Backdrop onClose={onClose} />, portalElement)}
+      {ReactDOM.createPortal(<ModalOverlay style={style}>{children}</ModalOverlay>, portalElement)}
     </Fragment>
   );
 };

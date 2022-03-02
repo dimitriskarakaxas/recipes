@@ -64,7 +64,7 @@ const AddRecipe = ({ recipeId, dateTimeData, onCloseAddRecipe }) => {
   };
 
   return (
-    <Modal onCloseAddRecipe={onCloseAddRecipe}>
+    <Modal onClose={onCloseAddRecipe}>
       <header>
         <h3 className="text-xl text-center font-bold md:text-left">Select Recipe</h3>
       </header>

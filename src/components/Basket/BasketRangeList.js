@@ -1,5 +1,5 @@
 import React from "react";
-import { AccordionItem, AccordionButton, AccordionPanel useMediaQuery } from "@chakra-ui/react";
+import { AccordionItem, AccordionButton, AccordionPanel, useMediaQuery } from "@chakra-ui/react";
 
 import BasketItem from "./BasketItem";
 

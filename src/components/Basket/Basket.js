@@ -4,7 +4,7 @@ import { Accordion } from "@chakra-ui/react";
 
 import BasketRangeList from "./BasketRangeList";
 
-const Basket = () => {
+const Basket = ({ onShowAddBasket }) => {
   return (
     <div className="mt-12">
       <header className="flex justify-between">
@@ -21,7 +21,10 @@ const Basket = () => {
         </Accordion>
       </div>
       <div className="text-right">
-        <button className="bg-sky-500 text-white px-6 py-2 rounded-md ml-auto transition-all hover:scale-105">
+        <button
+          className="bg-sky-500 text-white px-6 py-2 rounded-md ml-auto transition-all hover:scale-105"
+          onClick={onShowAddBasket}
+        >
           New Basket
         </button>
       </div>
