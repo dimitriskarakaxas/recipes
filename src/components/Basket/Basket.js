@@ -9,7 +9,6 @@ const Basket = ({ onShowAddBasket }) => {
   const basketCtx = useContext(BasketsContext);
 
   const renderedBaskets = basketCtx.baskets.baskets;
-  console.log(renderedBaskets);
 
   return (
     <div className="mt-12">

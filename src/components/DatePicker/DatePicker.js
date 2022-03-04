@@ -10,8 +10,8 @@ const DatePicker = ({ selectedDate, onDateChange, calendarClassName }) => {
       value={selectedDate}
       onChange={onDateChange}
       calendarClassName={calendarClassName}
-      // colorPrimary="#6a3cba"
-      // colorPrimaryLight="gray"
+      colorPrimary="#7e22ce"
+      colorPrimaryLight="#d0b5e8"
       calendarTodayClassName="custom-today-day"
     />
   );
