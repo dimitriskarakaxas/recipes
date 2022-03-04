@@ -12,6 +12,7 @@ const Basket = ({ onShowAddBasket }) => {
 
   return (
     <div className="mt-12">
+      <h2 className="mb-8 font-bold text-lg">Basket</h2>
       <header className="flex justify-between">
         <p className="font-bold text-sm">All Baskets</p>
         <p className="font-bold text-sm text-gray-400">Items Included</p>

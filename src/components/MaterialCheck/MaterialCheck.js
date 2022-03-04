@@ -17,11 +17,11 @@ const MaterialCheck = ({ onClose, onSave }) => {
   };
 
   const saveMaterialInfoHandler = () => {
-    // if (expirationDaysInputValue.trim().length === 0 || quantityInputValue.trim().length === 0) {
-    //   console.log("hi");
-    //   setError(true);
-    //   return;
-    // }
+    if (expirationDaysInputValue.trim().length === 0 || quantityInputValue.trim().length === 0) {
+      console.log("hi");
+      setError(true);
+      return;
+    }
 
     onSave();
   };
