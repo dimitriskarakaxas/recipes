@@ -6,8 +6,6 @@ import AddBasket from "../components/AddBasket/AddBasket";
 const Cart = () => {
   const [addBasketIsShown, setAddBasketIsShown] = useState(false);
 
-  const [selectedDateRange, setSelectedDateRange] = useState({ from: null, to: null });
-
   const showAddBasketHandler = () => {
     setAddBasketIsShown(true);
   };
@@ -20,13 +18,7 @@ const Cart = () => {
     <Fragment>
       <WasteEfficiency />
       <Basket onShowAddBasket={showAddBasketHandler} />
-      {addBasketIsShown && (
-        <AddBasket
-          onCloseAddBasket={hideAddBasketHandler}
-          selectedDate={selectedDateRange}
-          onDateChange={setSelectedDateRange}
-        />
-      )}
+      {addBasketIsShown && <AddBasket onCloseAddBasket={hideAddBasketHandler} />}
     </Fragment>
   );
 };

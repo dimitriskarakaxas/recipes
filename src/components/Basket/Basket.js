@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Accordion } from "@chakra-ui/react";
 
 import BasketRangeList from "./BasketRangeList";
+import BasketsContext from "../../store/baskets-context";
 
 const Basket = ({ onShowAddBasket }) => {
+  const basketCtx = useContext(BasketsContext);
+
+  const renderedBaskets = basketCtx.baskets.baskets;
+  console.log(renderedBaskets);
+
   return (
     <div className="mt-12">
       <header className="flex justify-between">
@@ -14,10 +20,9 @@ const Basket = ({ onShowAddBasket }) => {
       </header>
       <div className="my-8">
         <Accordion allowToggle>
-          <BasketRangeList />
-          <BasketRangeList />
-          <BasketRangeList />
-          <BasketRangeList />
+          {renderedBaskets.map((basket) => (
+            <BasketRangeList key={basket.id} />
+          ))}
         </Accordion>
       </div>
       <div className="text-right">

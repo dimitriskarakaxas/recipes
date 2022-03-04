@@ -24,8 +24,16 @@ const Home = () => {
 
   return (
     <Fragment>
-      <DatePicker selectedDate={selectedDate} onDateChange={setSelectedDate} />
-      <TimeLine onTimeChange={setSelectedTime} onShowAddRecipe={showAddRecipeHandler} selectedDate={selectedDate} />
+      <div className="xl:flex md:justify-between items-center">
+        <div className="w-fit mx-auto">
+          <DatePicker
+            selectedDate={selectedDate}
+            onDateChange={setSelectedDate}
+            calendarClassName="home-page-calendar"
+          />
+        </div>
+        <TimeLine onTimeChange={setSelectedTime} onShowAddRecipe={showAddRecipeHandler} selectedDate={selectedDate} />
+      </div>
       {addRecipe.isShown && (
         <AddRecipe
           recipeId={addRecipe.recipeId}

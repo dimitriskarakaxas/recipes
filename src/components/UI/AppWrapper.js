@@ -17,8 +17,8 @@ const AppWrapper = (props) => {
 
   return (
     // <div className="w-screen min-h-screen flex justify-center items-center">
-    <div className="w-screen mt-2 flex justify-center items-center">
-      <div className="w-10/12 max-w-5xl">
+    <div className="w-screen flex justify-center items-center">
+      <div className="w-10/12 max-w-7xl mt-8">
         <Link
           to={link.path}
           className={`text-white text-right bg-purple-700 px-6 py-2 mb-5 w-fit flex ml-auto group ${

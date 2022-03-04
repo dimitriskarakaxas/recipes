@@ -1,55 +1,16 @@
-.responsive-calendar {
-  font-size: 15px !important;
-  width: 100%;
-  overflow: hidden !important;
+.home-page-calendar {
+  font-size: 16px !important;
 }
 
-.Calendar__day {
-  border-radius: 1000px !important;
+.addBasket-calendar {
+  font-size: 14px !important;
 }
-
-.Calendar__section.-hiddenNext {
-  pointer-events: none !important;
-}
-
-.Calendar__section.-hiddenPrevious .Calendar__day {
-  pointer-events: none !important;
-}
-
-.Calendar__section.-shown {
-  background: #fff !important;
-}
-
-.custom-today-day {
-  color: brown !important;
-}
-
-/*.custom-today-day::after {
-  content: "Today" !important;
-  font-size: 10px !important;
-  position: absolute !important;
-  top: 0 !important;
-  left: 50% !important;
-  height: auto !important;
-  width: auto !important;
-  background: transparent !important;
-  transition: none !important;
-  z-index: 20 !important;
-  transform: translateX(-50%) !important;
-}*/
 
 @media (max-width: 900px) {
-  .responsive-calendar {
+  .addBasket-calendar {
     font-size: 2.4vw !important;
   }
-}
-
-@media (max-width: 500px) {
-  .Calendar__day {
-    border-radius: 50% !important;
-  }
-
-  .custom-today-day::after {
-    font-size: 5px !important;
+  .home-page-calendar {
+    font-size: 2.4vw !important;
   }
 }
