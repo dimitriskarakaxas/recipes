@@ -22,6 +22,8 @@ const BasketItem = () => {
   const checkboxClickHandler = () => {
     if (!isChecked) {
       showMaterialCheckHandler();
+    } else {
+      setIsChecked(false);
     }
   };
 

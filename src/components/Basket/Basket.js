@@ -11,7 +11,7 @@ const Basket = ({ onShowAddBasket }) => {
   const renderedBaskets = basketCtx.baskets.baskets;
 
   return (
-    <div className="mt-12">
+    <div className="lg:w-3/4">
       <h2 className="mb-8 font-bold text-lg">Basket</h2>
       <header className="flex justify-between">
         <p className="font-bold text-sm">All Baskets</p>
