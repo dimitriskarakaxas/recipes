@@ -16,4 +16,8 @@
   .btn {
     @apply border border-black py-3 px-10 transition-all  text-black font-bold rounded-lg hover:rounded-none;
   }
+
+  .hoverable {
+    @apply md:transition-all md:hover:scale-[1.01] md:hover:shadow-xl;
+  }
 }
