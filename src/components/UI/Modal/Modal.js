@@ -9,7 +9,7 @@ const ModalOverlay = ({ children, style }) => {
   return (
     <div
       style={style}
-      className="bg-white w-4/5 md:w-2/3 max-w-4xl px-10 py-16 rounded-lg fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[250]"
+      className="bg-white w-4/5 md:w-2/3 max-w-3xl px-10 py-16 rounded-lg fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  z-[250]"
     >
       <div>{children}</div>
     </div>
