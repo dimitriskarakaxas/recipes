@@ -33,10 +33,12 @@ const Ingredients = ({ ingredients, preview = true }) => {
             </div>
           ))}
       </div>
-      <button className="absolute left-[101%] top-[105%] -translate-y-1/2 cursor-pointer w-10 h-10 transition hover:scale-110">
-        <div className="w-full h-[5px] bg-purple-700 rounded-lg absolute top-1/2 -translate-y-1/2"></div>
-        <div className="w-full h-[5px] bg-purple-700 rounded-lg absolute rotate-90 top-1/2 -translate-y-1/2"></div>
-      </button>
+      {!preview && (
+        <button className="absolute left-[101%] top-[105%] -translate-y-1/2 cursor-pointer w-10 h-10 transition hover:scale-110">
+          <div className="w-full h-[5px] bg-purple-700 rounded-lg absolute top-1/2 -translate-y-1/2"></div>
+          <div className="w-full h-[5px] bg-purple-700 rounded-lg absolute rotate-90 top-1/2 -translate-y-1/2"></div>
+        </button>
+      )}
     </div>
   );
 };
