@@ -7,7 +7,9 @@ import { AiOutlineHeart as HeartIcon } from "react-icons/ai";
 import Ingredients from "../CreateRecipeForm/Ingredients";
 import { INGREDIENTS } from "../../data/ingredients";
 
-const RecipePreview = () => {
+const RecipePreview = ({ recipeInfo }) => {
+  const { title, subtitle, preperationTime, servings } = recipeInfo;
+
   return (
     <div className="flex flex-col">
       <div className="h-72">
@@ -20,8 +22,8 @@ const RecipePreview = () => {
       <div className="h-96 bg-white rounded-3xl -mt-5 relative z-2">
         {/* Title */}
         <div className="bg-white absolute left-6 top-0 -translate-y-1/2 shadow-xl rounded-[500px] px-4 py-2">
-          <h2 className="text-xl font-black text-gray-800">Fried Rice</h2>
-          <p className="text-sm text-gray-500">Pista House, Kukatpally</p>
+          <h2 className="text-xl font-black text-gray-800">{title.length ? title : "Title goes here"}</h2>
+          <p className="text-sm text-gray-500">{subtitle.length ? subtitle : "Subtitle goes here"}</p>
         </div>
 
         {/* Like */}
@@ -37,7 +39,7 @@ const RecipePreview = () => {
             <p className="font-bold">Preperation time</p>
             <div className="flex w-[25%]">
               <ClockIcon className="text-red-400" />
-              <p className="text-sm text-gray-600 ml-2">30 min</p>
+              <p className="text-sm text-gray-600 ml-2">{preperationTime.length ? preperationTime : "Preperation"}</p>
             </div>
           </div>
           <div className="flex justify-between mt-2">
@@ -51,7 +53,7 @@ const RecipePreview = () => {
             <p className="font-bold">Servings</p>
             <div className="flex w-[25%]">
               <ShoppingBaskIcon className="text-red-400" />
-              <p className="text-sm text-gray-600 ml-2">4 servings</p>
+              <p className="text-sm text-gray-600 ml-2">{servings.length ? servings : "Servings"}</p>
             </div>
           </div>
         </div>
@@ -59,6 +61,32 @@ const RecipePreview = () => {
         {/* Inredients */}
         <div className="mt-14">
           <Ingredients ingredients={INGREDIENTS} />
+        </div>
+
+        {/* Description */}
+        <div className="mt-14">
+          <p className="text-xl text-gray-600 font-black mb-6">Description</p>
+          <div className="flex items-center">
+            <p className="text-3xl font-black">1</p>
+            <p className="ml-8 text-gray-500">
+              Our Fried Rice is Made From The Finest Ingredients And Veggies. Single Dish Is Made With Fresh Vegetables,
+              Rescued.
+            </p>
+          </div>
+          <div className="flex items-center mt-6">
+            <p className="text-3xl font-black">2</p>
+            <p className="ml-8 text-gray-500">
+              Our Fried Rice is Made From The Finest Ingredients And Veggies. Single Dish Is Made With Fresh Vegetables,
+              Rescued.
+            </p>
+          </div>
+          <div className="flex items-center mt-6">
+            <p className="text-3xl font-black">3</p>
+            <p className="ml-8 text-gray-500">
+              Our Fried Rice is Made From The Finest Ingredients And Veggies. Single Dish Is Made With Fresh Vegetables,
+              Rescued.
+            </p>
+          </div>
         </div>
       </div>
     </div>

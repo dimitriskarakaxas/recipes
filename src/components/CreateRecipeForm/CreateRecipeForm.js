@@ -4,19 +4,45 @@ import { Input, Editable, EditableTextarea, EditablePreview } from "@chakra-ui/r
 import { INGREDIENTS } from "../../data/ingredients";
 import Ingredients from "./Ingredients";
 
-const CreateRecipeForm = () => {
+const CreateRecipeForm = ({ setRecipeInfo }) => {
   const [preperationSteps, setPreperationSteps] = useState([{ value: "", hasFocus: false }]);
 
-  console.log(preperationSteps);
+  const handleTitleInputChange = (event) => {
+    setRecipeInfo((prevValue) => {
+      return { ...prevValue, title: event.target.value };
+    });
+  };
+
+  const handleSubtitleInputChange = (event) => {
+    setRecipeInfo((prevValue) => {
+      return { ...prevValue, subtitle: event.target.value };
+    });
+  };
+
+  const handlePreperationTimeInputChange = (event) => {
+    setRecipeInfo((prevValue) => {
+      return { ...prevValue, preperationTime: event.target.value };
+    });
+  };
+
+  const handleServingsInputChange = (event) => {
+    setRecipeInfo((prevValue) => {
+      return { ...prevValue, servings: event.target.value };
+    });
+  };
 
   return (
     <div>
       {/* Input Section */}
       <div>
-        <Input placeholder="Recipe Title" />
-        <Input placeholder="Subtitle i.e hungarian traditional diss" className="mt-4" />
-        <Input placeholder="Preperation Time" className="mt-4" />
-        <Input placeholder="Servings" className="mt-4" />
+        <Input placeholder="Recipe Title" onChange={handleTitleInputChange} />
+        <Input
+          placeholder="Subtitle i.e hungarian traditional diss"
+          className="mt-4"
+          onChange={handleSubtitleInputChange}
+        />
+        <Input placeholder="Preperation Time" className="mt-4" onChange={handlePreperationTimeInputChange} />
+        <Input placeholder="Servings" className="mt-4" onChange={handleServingsInputChange} />
       </div>
 
       {/* Ingredient Section */}
@@ -67,7 +93,6 @@ const CreateRecipeForm = () => {
                       }
                     }}
                     onFocus={() => {
-                      console.log("focused");
                       setPreperationSteps((prevSteps) => {
                         const newSteps = [...prevSteps];
                         newSteps[idx].hasFocus = true;
