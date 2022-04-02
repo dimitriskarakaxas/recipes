@@ -4,6 +4,9 @@ import { BiTimeFive as ClockIcon } from "react-icons/bi";
 import { MdShoppingBasket as ShoppingBaskIcon } from "react-icons/md";
 import { AiOutlineHeart as HeartIcon } from "react-icons/ai";
 
+import Ingredients from "../CreateRecipeForm/Ingredients";
+import { INGREDIENTS } from "../../data/ingredients";
+
 const RecipePreview = () => {
   return (
     <div className="flex flex-col">
@@ -51,6 +54,11 @@ const RecipePreview = () => {
               <p className="text-sm text-gray-600 ml-2">4 servings</p>
             </div>
           </div>
+        </div>
+
+        {/* Inredients */}
+        <div className="mt-14">
+          <Ingredients ingredients={INGREDIENTS} />
         </div>
       </div>
     </div>
