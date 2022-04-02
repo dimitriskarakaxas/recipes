@@ -5,7 +5,7 @@ import { INGREDIENTS } from "../../data/ingredients";
 import Ingredients from "./Ingredients";
 
 const CreateRecipeForm = ({ setRecipeInfo }) => {
-  const [preperationSteps, setPreperationSteps] = useState([{ value: "", hasFocus: false }]);
+  const [preparationSteps, setPreparationSteps] = useState([{ value: "", hasFocus: false }]);
 
   const handleTitleInputChange = (event) => {
     setRecipeInfo((prevValue) => {
@@ -19,9 +19,9 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
     });
   };
 
-  const handlePreperationTimeInputChange = (event) => {
+  const handlePreparationTimeInputChange = (event) => {
     setRecipeInfo((prevValue) => {
-      return { ...prevValue, preperationTime: event.target.value };
+      return { ...prevValue, preparationTime: event.target.value };
     });
   };
 
@@ -31,8 +31,8 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
     });
   };
 
-  const handlePreperationInputChange = (idx, newValue) => {
-    setPreperationSteps((prevSteps) => {
+  const handlePreparationInputChange = (idx, newValue) => {
+    setPreparationSteps((prevSteps) => {
       const newSteps = [...prevSteps];
       newSteps[idx].value = newValue;
 
@@ -41,7 +41,7 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
         // Remove <New Line> indicator from the end of the string
         newSteps[idx].value = newSteps[idx].value.slice(0, -1);
 
-        if (!preperationSteps.some((step) => step.value.trim().length === 0)) {
+        if (!preparationSteps.some((step) => step.value.trim().length === 0)) {
           newSteps[idx].hasFocus = false;
           newSteps[idx].isEdit = false;
           // Create new Editable for the new Step
@@ -55,9 +55,9 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
     });
   };
 
-  const handlePreperationInputBlur = (idx, step) => {
+  const handlePreparationInputBlur = (idx, step) => {
     if (step.hasFocus) {
-      setPreperationSteps((prevSteps) => {
+      setPreparationSteps((prevSteps) => {
         const newSteps = [...prevSteps];
         newSteps[idx].hasFocus = false;
         newSteps[idx].isEdit = false;
@@ -65,7 +65,7 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
         // If TextArea is empy we are not creating new Step
         if (prevSteps[idx].value.trim() === "") return newSteps;
         // If There is at least one empty TextArea we are not creating new Step
-        if (preperationSteps.some((step) => step.value.trim().length === 0)) return newSteps;
+        if (preparationSteps.some((step) => step.value.trim().length === 0)) return newSteps;
 
         // Otherwise we create new Step
         newSteps.push({ value: "", hasFocus: false });
@@ -74,8 +74,8 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
     }
   };
 
-  const handlePreperationInputFocus = (idx) => {
-    setPreperationSteps((prevSteps) => {
+  const handlePreparationInputFocus = (idx) => {
+    setPreparationSteps((prevSteps) => {
       const newSteps = [...prevSteps];
       newSteps[idx].hasFocus = true;
       newSteps[idx].isEdit = true;
@@ -93,7 +93,7 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
           className="mt-4"
           onChange={handleSubtitleInputChange}
         />
-        <Input placeholder="Preperation Time" className="mt-4" onChange={handlePreperationTimeInputChange} />
+        <Input placeholder="Preparation Time" className="mt-4" onChange={handlePreparationTimeInputChange} />
         <Input placeholder="Servings" className="mt-4" onChange={handleServingsInputChange} />
       </div>
 
@@ -102,12 +102,12 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
         <Ingredients ingredients={INGREDIENTS} preview={false} />
       </div>
 
-      {/* Preperation Steps */}
+      {/* Preparation Steps */}
       <div className="mt-24">
         <p className="text-xl font-black">Preparation Steps</p>
         <div className="">
-          {preperationSteps &&
-            preperationSteps.map((step, idx) => (
+          {preparationSteps &&
+            preparationSteps.map((step, idx) => (
               <div key={idx} className="flex items-center mt-6">
                 <p className="mr-4 font-black">{idx + 1}</p>
                 <div className={`${idx > 0 ? "mt-2" : ""} relative w-full`}>
@@ -116,22 +116,22 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
                     startWithEditView={step.hasFocus}
                     className=""
                     onChange={(newValue) => {
-                      handlePreperationInputChange(idx, newValue);
+                      handlePreparationInputChange(idx, newValue);
                     }}
                     onBlur={() => {
-                      handlePreperationInputBlur(idx, step);
+                      handlePreparationInputBlur(idx, step);
                     }}
                     onFocus={() => {
                       console.log("triapoulakia");
-                      handlePreperationInputFocus(idx);
+                      handlePreparationInputFocus(idx);
                     }}
                     onKeyDown={(event) => {
                       if (
                         event.target.value.trim().length === 0 &&
                         (event.key === "Backspace" || event.code === "Backspace") &&
-                        preperationSteps.length > 1
+                        preparationSteps.length > 1
                       ) {
-                        setPreperationSteps((prevSteps) => {
+                        setPreparationSteps((prevSteps) => {
                           const newSteps = [...prevSteps];
                           newSteps.splice(idx, 1);
                           newSteps[0].hasFocus = true;

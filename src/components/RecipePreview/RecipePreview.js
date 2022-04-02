@@ -8,7 +8,7 @@ import Ingredients from "../CreateRecipeForm/Ingredients";
 import { INGREDIENTS } from "../../data/ingredients";
 
 const RecipePreview = ({ recipeInfo }) => {
-  const { title, subtitle, preperationTime, servings } = recipeInfo;
+  const { title, subtitle, preparationTime, servings } = recipeInfo;
 
   return (
     <div className="flex flex-col">
@@ -36,10 +36,10 @@ const RecipePreview = ({ recipeInfo }) => {
         {/* Info */}
         <div className="mt-14 w-4/5 mx-auto overflow-hidden">
           <div className="flex justify-between">
-            <p className="font-bold">Preperation time</p>
+            <p className="font-bold">Preparation time</p>
             <div className="flex w-[25%]">
               <ClockIcon className="text-red-400 flex-shrink-0" />
-              <p className="text-sm text-gray-600 ml-2">{preperationTime.length ? preperationTime : "Preperation"}</p>
+              <p className="text-sm text-gray-600 ml-2">{preparationTime.length ? preparationTime : "Preparation"}</p>
             </div>
           </div>
           <div className="flex justify-between mt-2">

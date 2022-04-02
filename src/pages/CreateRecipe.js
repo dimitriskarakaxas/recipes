@@ -6,7 +6,7 @@ const CreateRecipe = () => {
   const [recipeInfo, setRecipeInfo] = useState({
     title: "",
     subtitle: "",
-    preperationTime: "",
+    preparationTime: "",
     servings: "",
   });
 
