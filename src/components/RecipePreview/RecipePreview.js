@@ -11,6 +11,7 @@ const RecipePreview = () => {
         <img
           src="https://assets.epicurious.com/photos/5aa01240bb8d8278146573fc/master/pass/creamy-shrimp-risotto-with-mascarpone-recipe-BA-030718.jpg"
           className="h-full w-full object-cover"
+          alt={`Recipe`}
         />
       </div>
       <div className="h-96 bg-white rounded-3xl -mt-5 relative z-2">
