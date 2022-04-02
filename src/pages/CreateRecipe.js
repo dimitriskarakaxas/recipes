@@ -1,5 +1,6 @@
 import React from "react";
 import CreateRecipeForm from "../components/CreateRecipeForm/CreateRecipeForm";
+import RecipePreview from "../components/RecipePreview/RecipePreview";
 
 const CreateRecipe = () => {
   return (
@@ -7,7 +8,9 @@ const CreateRecipe = () => {
       <div className="w-5/12">
         <CreateRecipeForm />
       </div>
-      <div className="border border-red-300 w-5/12"></div>
+      <div className="w-5/12">
+        <RecipePreview />
+      </div>
     </div>
   );
 };
