@@ -31,6 +31,58 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
     });
   };
 
+  const handlePreperationInputChange = (idx, newValue) => {
+    setPreperationSteps((prevSteps) => {
+      const newSteps = [...prevSteps];
+      newSteps[idx].value = newValue;
+
+      // User clicked <Enter> while typing the Step
+      if (newValue.indexOf("\n") !== -1) {
+        // Remove <New Line> indicator from the end of the string
+        newSteps[idx].value = newSteps[idx].value.slice(0, -1);
+
+        if (!preperationSteps.some((step) => step.value.trim().length === 0)) {
+          newSteps[idx].hasFocus = false;
+          newSteps[idx].isEdit = false;
+          // Create new Editable for the new Step
+          newSteps.push({ value: "", hasFocus: true });
+        } else {
+          newSteps[idx + 1].hasFocus = true;
+          newSteps[idx + 1].isEdit = true;
+        }
+      }
+      return newSteps;
+    });
+  };
+
+  const handlePreperationInputBlur = (idx, step) => {
+    if (step.hasFocus) {
+      setPreperationSteps((prevSteps) => {
+        const newSteps = [...prevSteps];
+        newSteps[idx].hasFocus = false;
+        newSteps[idx].isEdit = false;
+
+        // If TextArea is empy we are not creating new Step
+        if (prevSteps[idx].value.trim() === "") return newSteps;
+        // If There is at least one empty TextArea we are not creating new Step
+        if (preperationSteps.some((step) => step.value.trim().length === 0)) return newSteps;
+
+        // Otherwise we create new Step
+        newSteps.push({ value: "", hasFocus: false });
+        return newSteps;
+      });
+    }
+  };
+
+  const handlePreperationInputFocus = (idx) => {
+    setPreperationSteps((prevSteps) => {
+      const newSteps = [...prevSteps];
+      newSteps[idx].hasFocus = true;
+      newSteps[idx].isEdit = true;
+      return newSteps;
+    });
+  };
+
   return (
     <div>
       {/* Input Section */}
@@ -64,51 +116,39 @@ const CreateRecipeForm = ({ setRecipeInfo }) => {
                     startWithEditView={step.hasFocus}
                     className=""
                     onChange={(newValue) => {
-                      setPreperationSteps((prevSteps) => {
-                        const newSteps = [...prevSteps];
-                        newSteps[idx].value = newValue;
-                        // User clicked <Enter> while typing the Step
-                        if (newValue.indexOf("\n") !== -1) {
-                          // Remove <New Line> indicator from the end of the string
-                          newSteps[idx].value = newSteps[idx].value.slice(0, -1);
-                          newSteps[idx].hasFocus = false;
-                          newSteps[idx].isEdit = false;
-                          // Create new Editable for the new Step
-                          newSteps.push({ value: "", hasFocus: true });
-                        }
-                        return newSteps;
-                      });
+                      handlePreperationInputChange(idx, newValue);
                     }}
                     onBlur={() => {
-                      if (step.hasFocus) {
+                      handlePreperationInputBlur(idx, step);
+                    }}
+                    onFocus={() => {
+                      console.log("triapoulakia");
+                      handlePreperationInputFocus(idx);
+                    }}
+                    onKeyDown={(event) => {
+                      if (
+                        event.target.value.trim().length === 0 &&
+                        (event.key === "Backspace" || event.code === "Backspace") &&
+                        preperationSteps.length > 1
+                      ) {
                         setPreperationSteps((prevSteps) => {
                           const newSteps = [...prevSteps];
-                          newSteps[idx].hasFocus = false;
-                          newSteps[idx].isEdit = false;
-                          if (step.value.trim() !== "") {
-                            newSteps.push({ value: "", hasFocus: false });
-                          }
+                          newSteps.splice(idx, 1);
+                          newSteps[0].hasFocus = true;
+                          newSteps[0].isEdit = true;
                           return newSteps;
                         });
                       }
-                    }}
-                    onFocus={() => {
-                      setPreperationSteps((prevSteps) => {
-                        const newSteps = [...prevSteps];
-                        newSteps[idx].hasFocus = true;
-                        newSteps[idx].isEdit = true;
-                        return newSteps;
-                      });
                     }}
                   >
                     <EditablePreview className="w-full border p-2 border-gray-300 min-h-[3.5rem]" />
                     <EditableTextarea className="p-2" />
                   </Editable>
-                  {!step.isEdit && (
+                  {/* {!step.isEdit && (
                     <button className="absolute top-0 right-0 bg-red-600 text-white px-2 py-1 text-xs rounded-tr-md transition-all hover:rounded-bl-md">
                       Delete
                     </button>
-                  )}
+                  )} */}
                 </div>
               </div>
             ))}

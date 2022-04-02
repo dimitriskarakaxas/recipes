@@ -34,25 +34,25 @@ const RecipePreview = ({ recipeInfo }) => {
         </div>
 
         {/* Info */}
-        <div className="mt-14 w-4/5 mx-auto">
+        <div className="mt-14 w-4/5 mx-auto overflow-hidden">
           <div className="flex justify-between">
             <p className="font-bold">Preperation time</p>
             <div className="flex w-[25%]">
-              <ClockIcon className="text-red-400" />
+              <ClockIcon className="text-red-400 flex-shrink-0" />
               <p className="text-sm text-gray-600 ml-2">{preperationTime.length ? preperationTime : "Preperation"}</p>
             </div>
           </div>
           <div className="flex justify-between mt-2">
             <p className="font-bold">Cooking time</p>
             <div className="flex w-[25%]">
-              <ClockIcon className="text-red-400" />
+              <ClockIcon className="text-red-400 flex-shrink-0" />
               <p className="text-sm text-gray-600 ml-2">30 min</p>
             </div>
           </div>
           <div className="flex justify-between mt-2">
             <p className="font-bold">Servings</p>
             <div className="flex w-[25%]">
-              <ShoppingBaskIcon className="text-red-400" />
+              <ShoppingBaskIcon className="text-red-400 flex-shrink-0" />
               <p className="text-sm text-gray-600 ml-2">{servings.length ? servings : "Servings"}</p>
             </div>
           </div>

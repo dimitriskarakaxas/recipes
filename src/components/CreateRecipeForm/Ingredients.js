@@ -24,9 +24,9 @@ const Ingredients = ({ ingredients, preview = true }) => {
               {!preview && (
                 <div className={"w-full flex justify-end items-center"}>
                   <button className="flex py-3 cursor-pointer group">
-                    <div className="w-2 h-2 bg-gray-400 rounded-full transition group-hover:translate-y-1 group-hover:bg-purple-700"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full transition ml-1 group-hover:-translate-y-1 group-hover:bg-purple-700"></div>
-                    <div className="w-2 h-2 bg-gray-400 rounded-full transition ml-1 group-hover:translate-y-1 group-hover:bg-purple-700"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full transition group-hover:-translate-x-[0.2rem] group-hover:bg-purple-700"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full transition ml-1 group-hover:bg-purple-700"></div>
+                    <div className="w-2 h-2 bg-gray-400 rounded-full transition ml-1 group-hover:translate-x-[0.2rem] group-hover:bg-purple-700"></div>
                   </button>
                 </div>
               )}

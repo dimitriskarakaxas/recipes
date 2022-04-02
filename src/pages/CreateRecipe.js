@@ -10,8 +10,6 @@ const CreateRecipe = () => {
     servings: "",
   });
 
-  console.log(recipeInfo);
-
   return (
     <div className="flex justify-between">
       <div className="w-5/12">
